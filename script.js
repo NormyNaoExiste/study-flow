@@ -1,6 +1,7 @@
 const toggleButton = document.getElementById('toggle-btn');
 const sidebar = document.getElementById('sidebar');
 
+const mainPage = document.getElementById('mainpage')
 
 function toggleSidebar(){
     sidebar.classList.toggle('close')
@@ -19,5 +20,11 @@ function toggleSubMenu(button){
     if(sidebar.classList.contains('close')){
         sidebar.classList.toggle('close')
         toggleButton.classList.toggle('rotate')
+    }
+}
+
+function changeScene(scene){
+    if(scene == 'pomodoro'){
+        mainPage.innerHTML = '<p>teste</p>'
     }
 }
