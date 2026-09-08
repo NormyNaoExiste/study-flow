@@ -53,7 +53,16 @@ body{
         font-weight: 600
     }
 }
-#sidebar ul li.active a{
+#sidebar ul li.active > a{
+    color: var(--accent-clr);
+
+    svg{
+        fill: var(--accent-clr);
+    }
+
+    transition: 20ms ease;
+}
+#sidebar ul li.active > .dropdown-btn{
     color: var(--accent-clr);
 
     svg{

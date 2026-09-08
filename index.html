@@ -11,13 +11,15 @@
     <nav id="sidebar">
         <ul>
             <li>
-                <span class="logo">Etec 2026</span>
+                <span class="logo">Study Flow
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M480-840q75 0 140.5 28T735-735q25 25 44 54t33 61q14 33 21 68t7 71q0 17-13 29t-30 12q-16 0-26.5-11.5T760-480q0-10-.5-20t-2.5-20H639q1 10 1 20v20q0 17-12 28.5T599-440q-17 0-28-11.5T560-480q0-10-.5-20t-1.5-20H403q-1 10-1.5 20t-.5 20q0 17-11 28.5T362-440q-17 0-29-11.5T321-480v-20q0-10 1-20H204q-2 10-2.5 20t-.5 20q0 17-10.5 28.5T164-440q-17 0-30-11.5T121-480q0-36 7-71.5t21-68.5q14-32 33-61t44-54q49-49 114-77t140-28ZM228-600h103q8-43 20-77.5t26-62.5q-48 18-87 54.5T228-600Zm186 0h132q-10-43-25-84t-41-76q-26 35-41.5 76T414-600Zm216 0h103q-23-49-62.5-85.5T583-740q14 30 26.5 63.5T630-600ZM451.5-131.5Q440-143 440-160q0-50-35-85t-85-35H120q-17 0-28.5-11.5T80-320q0-17 11.5-28.5T120-360h200q48 0 89.5 21t70.5 59q29-38 70.5-59t89.5-21h200q17 0 28.5 11.5T880-320q0 17-11.5 28.5T840-280H640q-50 0-85 35t-35 85q0 17-11.5 28.5T480-120q-17 0-28.5-11.5Z"/></svg>
+                </span>
                 <button id="toggle-btn" onclick="toggleSidebar()">
                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m313-480 155 156q11 11 11.5 27.5T468-268q-11 11-28 11t-28-11L228-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 27.5-11.5T468-692q11 11 11 28t-11 28L313-480Zm264 0 155 156q11 11 11.5 27.5T732-268q-11 11-28 11t-28-11L492-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 27.5-11.5T732-692q11 11 11 28t-11 28L577-480Z"/></svg>
                 </button>
             </li>
             <li class="active">
-                <a href="index.html">
+                <a href="#home" onclick="changeScene('home'); toggleActive(this)">
                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M240-200h120v-200q0-17 11.5-28.5T400-440h160q17 0 28.5 11.5T600-400v200h120v-360L480-740 240-560v360Zm-80 0v-360q0-19 8.5-36t23.5-28l240-180q21-16 48-16t48 16l240 180q15 11 23.5 28t8.5 36v360q0 33-23.5 56.5T720-120H560q-17 0-28.5-11.5T520-160v-200h-80v200q0 17-11.5 28.5T400-120H240q-33 0-56.5-23.5T160-200Zm320-270Z"/></svg>
                     <span>Home</span>
                 </a>
@@ -30,14 +32,14 @@
                 </button>
                 <ul class="sub-menu">
                     <div>
-                        <li><a href="#">Materias</a></li>
-                        <li><a href="#">Tarefas</a></li>
-                        <li><a href="#">Flashcards</a></li>
+                        <li><a href="#materias" onclick="changeScene('materias'); toggleActive(this)">Materias</a></li>
+                        <li><a href="#tarefas">Tarefas</a></li>
+                        <li><a href="#flashcards">Flashcards</a></li>
                     </div>
                 </ul>
             </li>
             <li>
-                <a href="#pomodoro" onclick="changeScene(pomodoro)">
+                <a href="#pomodoro" onclick="changeScene('pomodoro'); toggleActive(this)">
                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M520-456v-144q0-17-11.5-28.5T480-640q-17 0-28.5 11.5T440-600v159q0 8 3 15.5t9 13.5l112 112q11 11 28 11t28-11q11-11 11-28t-11-28L520-456ZM339.5-108.5q-65.5-28.5-114-77t-77-114Q120-365 120-440t28.5-140.5q28.5-65.5 77-114t114-77Q405-800 480-800t140.5 28.5q65.5 28.5 114 77t77 114Q840-515 840-440t-28.5 140.5q-28.5 65.5-77 114t-114 77Q555-80 480-80t-140.5-28.5ZM480-440ZM82-668q-11-11-11-28t11-28l114-114q11-11 28-11t28 11q11 11 11 28t-11 28L138-668q-11 11-28 11t-28-11Zm796 0q-11 11-28 11t-28-11L708-782q-11-11-11-28t11-28q11-11 28-11t28 11l114 114q11 11 11 28t-11 28ZM480-160q117 0 198.5-81.5T760-440q0-117-81.5-198.5T480-720q-117 0-198.5 81.5T200-440q0 117 81.5 198.5T480-160Z"/></svg>
                     <span>Pomodoro</span>
                 </a>
