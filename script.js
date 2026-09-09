@@ -15,13 +15,48 @@ const cenas = {
             <h2>Lorem</h2>
             <p>Paragrafo</p>
         </div>`,
-    pomodoro: `<div class="container">
+    pomodoro: `<div id="pomodoro">
             <h2>Pomodoro</h2>
-            <p>25:00</p>
+            <p class="relogio">25:00</p>
+            <div>
+                <button>Iniciar</button>
+                <button>Reset</button>
+            </div>
         </div>`,
     materias: `<div class="container">
             <h2>Materias</h2>
             <p>Aqui fica as materias</p>
+        </div>`,
+    tarefas: `<div class="container">
+            <h2>Tarefas</h2>
+            <p>Aqui fica as tarefas</p>
+        </div>`,
+    flashcards: `<div class="container">
+            <h2>Flashcards</h2>
+            <p>Aqui fica os flashcards</p>
+        </div>`,
+    creditos: `<div class="container">
+            <div class="container-dev">
+                <img src="photos/aspanLogo.webp" class="photo">
+                <div>
+                    <h2>Davi Felipe</h2>
+                    <p>Desenvolvedor front-end</p>
+                </div>
+            </div>
+            <div class="container-dev">
+                <img src="photos/aspanLogo.webp" class="photo">
+                <div>
+                    <h2>Danielle Heloisa</h2>
+                    <p>Desenvolvedora mobile</p>
+                </div>
+            </div>
+            <div class="container-dev">
+                <img src="photos/aspanLogo.webp" class="photo">
+                <div>
+                    <h2>Leonador Menezes</h2>
+                    <p>Desenvolvedor mobile</p>
+                </div>
+            </div>
         </div>`
 }
 

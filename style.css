@@ -44,6 +44,7 @@ body{
 }
 #sidebar ul{
     list-style: none;
+    
 }
 #sidebar > ul > li:first-child{
     display: flex;
@@ -154,6 +155,84 @@ main p{
 
     h2, p { margin-top: 1em; }
 }
+
+#pomodoro{
+    border: 1px solid var(--line-clr);
+    padding: min(3em, 15%);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+    .relogio{
+        margin-top: 1em;
+        margin-bottom: 1em;
+        font-size: 3rem;
+    }
+    button{
+        border: 1px solid var(--line-clr);
+        border-radius: 24px;
+        color: var(--secondary-text);
+        padding: 20px 30px;
+        box-sizing: border-box;
+        font-weight: 600;
+        background: none;
+        margin-bottom: 5px;
+        margin-left: 5px;
+        margin-right: 5px;
+        transition: 20ms ease-in-out;
+    }
+    button:hover{
+        border: 1px solid var(--hover-clr);
+        background-color: var(--hover-clr);
+        color: var(--line-clr);
+        cursor: pointer;
+    }
+}
+
+
+.container-dev{
+    border: 1px solid var(--line-clr);
+    padding: min(3em, 15%);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 1fr;
+
+    h2, p{
+        padding: 5px 1em;
+    }
+}
+
+#creditos{
+    margin-top: auto;
+    margin-bottom: 15%;
+}
+
+.photo{
+    border: 1px solid var(--line-clr);
+    border-radius: 50%;
+    box-sizing: border-box;
+    margin: 5px;
+}
+
+
+.sub-menu a{
+    margin-left: 1.8em;
+}
+
+
+
+
+
+@media(min-width:801px){
+    #sidebar ul{
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+}
+
+
 
 @media(max-width: 800px){
     body{
