@@ -213,6 +213,10 @@ main p{
     border-radius: 50%;
     box-sizing: border-box;
     margin: 5px;
+    width: 192px;
+    height: 192px;
+    max-width: 100%;
+    object-fit: cover;
 }
 
 
@@ -237,12 +241,32 @@ main p{
 @media(max-width: 800px){
     body{
         grid-template-columns: 1fr;
+        min-width: 0;
     }
     main{
         padding: 2em 1em 60px 1em;
+        min-width: 0;
     }
     .container{
         border: none;
+        padding: 0;
+        min-width: 0;
+    }
+     #creditos{
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .container-dev{
+        grid-template-columns: 1fr;
+        justify-items: center;
+        text-align: center;
+        border: none;
+        padding: 1em 0;
+        row-gap: 0.5em;
+    }
+
+    .container-dev h2, .container-dev p{
         padding: 0;
     }
     #sidebar{

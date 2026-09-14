@@ -17,19 +17,34 @@ const cenas = {
         </div>`,
     pomodoro: `<div id="pomodoro">
             <h2>Pomodoro</h2>
-            <p class="relogio">25:00</p>
+            <p class="relogio" id="tempo-mostrado">25:00</p>
             <div>
-                <button>Iniciar</button>
-                <button>Reset</button>
+                <button id="botao-iniciar" onclick="iniciarOuPausar()">Iniciar</button>
+                <button onclick="reiniciarCronometro()">Reset</button>
             </div>
         </div>`,
     materias: `<div class="container">
             <h2>Materias</h2>
-            <p>Aqui fica as materias</p>
+            <form id="form-materia">
+                <input type="text" id="input-materia"
+                placeholder="Ex:materia aqui">
+                <button type="submit" class="botaoPrimario">Adicionar</button>
+            </form>
+            <div id="lista-materias">
+            </div>
         </div>`,
     tarefas: `<div class="container">
             <h2>Tarefas</h2>
-            <p>Aqui fica as tarefas</p>
+            <form id="form-tarefa">
+                <input type="text" id="input-tarefa"
+                placeholder="Ex: Estudar capitulo 1">
+                <select id="select-categoria-tarefa">
+                    <option value="">Sem categoria</option>
+                </select>
+                <button type="submit" class="botaoPrimario">Adicionar</button>
+            </form>
+            <div id="filtro-categorias"></div>
+            <div id="lista-tarefas"></div>
         </div>`,
     flashcards: `<div class="container">
             <h2>Flashcards</h2>
@@ -83,6 +98,14 @@ function toggleSubMenu(button){
 function changeScene(sceneName){
     if(cenas[sceneName]){
         mainPage.innerHTML = cenas[sceneName]
+
+        if(sceneName == 'pomodoro'){
+            atualizarTelaDoTempo();
+            document.getElementById('botao-iniciar').textContent = cronometroLigado ? "Pausar":"Iniciar";
+        }
+        if(sceneName == 'materias'){
+            mostrarMateria();
+        }
     } else{
         alert(`cena ${sceneName} não existe`)
     }
@@ -99,4 +122,91 @@ function toggleActive(clicado){
     if(parentLink){
         parentLink.classList.add("active")
     }
+}
+
+//materias
+
+let materias = [];
+
+const formMateria = document.getElementById("form-materia");
+
+document.addEventListener("submit", (e)=>{
+    if(e.target.id !== "form-materia"){
+        return;
+    }
+    e.preventDefault();
+
+    const campo = document.getElementById("input-materia");
+    const texto = campo.value.trim()
+
+    if(texto == "") return;
+
+    materias.push(texto);
+    campo.value = "";
+    mostrarMateria();
+})
+
+function mostrarMateria(){
+    const container = document.getElementById("lista-materias");
+    container.innerHTML = ""
+
+    materias.forEach((nome, indice)=>{
+        const cartao = document.createElement("div");
+        cartao.className = "cartao";
+        cartao.innerHTML = nome + '<button onclick="removerMateria(' + indice +' )">x</button>';
+        container.appendChild(cartao);
+    });
+}
+
+function removerMateria(indice){
+    materias.splice(indice, 1);
+    mostrarMateria();
+}
+
+//pomodoro - peguei de outro projeto
+let segundosRestantes = 25 * 60;
+let cronometroLigado = false;
+let intervaloDoTimer = null;
+
+function atualizarTelaDoTempo(){
+    const minutos = Math.floor(segundosRestantes / 60);
+    const segundos = segundosRestantes % 60;
+    const minutosTexto = String(minutos).padStart(2, "0");
+    const segundosTexto = String(segundos).padStart(2, "0");
+    document.getElementById("tempo-mostrado").textContent = minutosTexto + ":" + segundosTexto;
+
+};
+
+function iniciarOuPausar(){
+    const botao = document.getElementById("botao-iniciar");
+
+    if(cronometroLigado){
+        clearInterval(intervaloDoTimer);
+        cronometroLigado = false;
+        botao.textContent = "Continuar"
+    } else{
+        cronometroLigado = true;
+        botao.textContent = "Pausar"
+
+        intervaloDoTimer = setInterval(function (){
+            segundosRestantes = segundosRestantes - 1;
+
+            if(segundosRestantes <= 0){
+                clearInterval(intervaloDoTimer)
+                cronometroLigado = false;
+                botao.textContent = "Iniciar"
+                alert("Terminou o tempo");
+            }
+
+            atualizarTelaDoTempo();
+        }, 1000);
+    };
+};
+
+function reiniciarCronometro(){
+    clearInterval(intervaloDoTimer);
+    cronometroLigado = false;
+    segundosRestantes = 25 * 60;
+    document.getElementById("botao-iniciar").textContent = "Iniciar";
+    atualizarTelaDoTempo();
 }
