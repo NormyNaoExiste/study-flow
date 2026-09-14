@@ -190,6 +190,21 @@ main p{
     }
 }
 
+.home-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+}
+.home-card{
+    margin-bottom: 0;
+    cursor: pointer;
+    transition: 150ms ease-in-out;
+}
+.home-card:hover{
+    border-color: var(--hover-clr);
+    background-color: rgba(42, 131, 95, 0.15);
+}
 
 .container-dev{
     border: 1px solid var(--line-clr);
