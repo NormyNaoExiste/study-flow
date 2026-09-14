@@ -4,17 +4,20 @@ const sidebar = document.getElementById('sidebar');
 const mainPage = document.getElementById('mainpage')
 const cenas = {
     home: `<div class="container">
-            <h2>Lorem</h2>
-            <p>Paragrafo</p>
+            <h2>Bem-vindo a Lumi!</h2>
+            <p>Seu app favorito para matérias e tarefas!</p>
         </div>
-        <div class="container">
-            <h2>Lorem</h2>
-            <p>Paragrafo</p>
-        </div>
-        <div class="container">
-            <h2>Lorem</h2>
-            <p>Paragrafo</p>
-        </div>`,
+       <div class="home-grid">
+            <div class="container home-card">
+                <h2>Materias</h2>
+            </div>
+            <div class="container home-card">
+                <h2>Tarefas</h2>
+            </div>
+       </div>
+       <div class="container">
+            <h2>Flashcard</h2>
+       </div>`,
     pomodoro: `<div id="pomodoro">
             <h2>Pomodoro</h2>
             <p class="relogio" id="tempo-mostrado">25:00</p>
