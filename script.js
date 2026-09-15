@@ -255,11 +255,34 @@ function mostrarFiltroCategorias(){
         botao.type = "button"
         botao.className = "botao-filtro";
         botao.textContent = categoria;
+
+        const estaoAtivo = (categoria === "Todas" && filtroCategoriaAtual === "") || categoria === filtroCategoriaAtual;
+        if(estaoAtivo){
+            botao.classList.add("ativo");
+        }
+
+        botao.onclick = () => {
+            filtroCategoriaAtual = categoria === "Todas" ? "": categoria;
+            mostrarTarefas()
+        }
+
+        container.appendChild(botao);
     })
 }
 
-function mostrarTarefa(){
+function mostrarTarefas(){
+    mostrarFiltroCategorias();
 
+    const container = document.getElementById("lista-tarefas");
+    if(!container) return;
+
+    container.innerHTML = ""
+
+    const tarefasFiltradas = filtroCategoriaAtual === "" ? tarefas: tarefas.filter(t=>(t.categoria || "sem categoria") === filtroCategoriaAtual)
+
+    if(tarefasFiltradas.length === 0){
+        container.innerHTML = "<p>sem tarefa</p>"
+    }
 }
 
 
