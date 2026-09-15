@@ -213,3 +213,72 @@ function reiniciarCronometro(){
     document.getElementById("botao-iniciar").textContent = "Iniciar";
     atualizarTelaDoTempo();
 }
+
+//tarefas
+
+let tarefas = []
+
+document.addEventListener("submit", (e) =>{
+    if(e.target.id !== "form-materia"){
+        return
+    }
+    e.preventDefault()
+
+    const campoTexto = document.getElementById('input-tarefa');
+    const campoCategoria = document.getElementById('select-categoria-tarefa');
+
+    const texto = campoTexto.value.trim()
+    const categoria = campoCategoria.value;
+
+    if(texto === "") return;
+
+    tarefas.push({
+        id: Date.now(),
+        texto: texto,
+        categoria: categoria
+    });
+
+    campoTexto.value = "";
+})
+
+function mostrarFiltroCategorias(){
+    const container = document.getElementById('filtro-categorias');
+    if(!container) return;
+
+    container.innerHTML = '';
+
+    const categorisaUsadas = tarefas.map(t => t.categoria || "sem categoria");
+    const categoriasUnicas = ["Todas", new Set(categorisaUsadas)]
+
+    categoriasUnicas.forEach((categoria) =>{
+        const botao = document.createElement("button")
+        botao.type = "button"
+        botao.className = "botao-filtro";
+        botao.textContent = categoria;
+    })
+}
+
+function mostrarTarefa(){
+
+}
+
+
+
+
+
+
+//mudar o tema
+
+function trocarTema(){
+    document.body.classList.toggle('light-theme');
+    const temaAtual = document.body.classList.contains('light-theme') ?
+    'light' : 'dark';
+    localStorage.setItem('tema', temaAtual);
+}
+
+function carregarTema(){
+    const temaSalvo = localStorage.getItem('tema')
+    if(temaSalvo === 'light'){
+        document.body.classList.add('light-theme')
+    }
+}
