@@ -282,7 +282,16 @@ function mostrarTarefas(){
 
     if(tarefasFiltradas.length === 0){
         container.innerHTML = "<p>sem tarefa</p>"
+        return
     }
+
+    tarefasFiltradas.forEach((tarefa)=>{
+        const categoriaTesxto = tarefa.categoria || "sem categoria"
+
+        const cartao = document.createElement("div");
+        cartao.className = "cartao-tarefa";
+        cartao.innerHTML = `<>`
+    })
 }
 
 
