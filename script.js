@@ -78,7 +78,7 @@ const cenas = {
                 </div>`,
     creditos: `<div class="container">
             <div class="container-dev">
-                <img src="photos/aspanLogo.webp" class="photo">
+                <img src="https://github.com/NormyNaoExiste.png" class="photo">
                 <div>
                     <h2>Davi Felipe</h2>
                     <p>Desenvolvedor front-end</p>
