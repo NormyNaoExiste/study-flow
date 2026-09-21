@@ -50,9 +50,32 @@ const cenas = {
             <div id="lista-tarefas"></div>
         </div>`,
     flashcards: `<div class="container">
-            <h2>Flashcards</h2>
-            <p>Aqui fica os flashcards</p>
-        </div>`,
+                    <h2>Flashcards</h2>
+                    <form id="form-flashcard">
+                    <input type="text" id="input-frente"
+                    placeholder="Frente (pergunta)">
+                    <input type="text" id="input-verso"
+                    placeholder="Verso (resposta)">
+                    <select id="select-categoria-flashcard">
+                        <option value="">Sem categoria</option>
+                    </select>
+                    <button type="submit" class="botaoPrimario">
+                        adicionar cartao
+                    </button>
+                    </form>
+                    
+                    <div id="area-flashcard">
+                        <div id="cartao-flashcard" onclick="virarFlashcard()">
+                            <p id="texto-flashcard">Nenhum cartão ainda</p>
+                        </div>
+                        <div id="navegacao-flashcard">
+                            <button type="button" onclick="cartaoAnterior()">Anterior</button>
+                            <span id="contador-flashcard"></span>
+                            <button type="button" onclick="proximoCartao()">Próximo</button>
+                        </div>
+                    <button type="button" id="botao-excluir-flashcard" onclick="removerFlashcardAtual()">Excluir este cartão</button>
+                    </div>
+                </div>`,
     creditos: `<div class="container">
             <div class="container-dev">
                 <img src="photos/aspanLogo.webp" class="photo">
@@ -327,6 +350,8 @@ function removerTarefa(id){
     tarefas = tarefas.filter(t => t.id !== id);
     mostrarTarefas();
 }
+
+//Flashcards
 
 
 
