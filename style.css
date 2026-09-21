@@ -50,7 +50,11 @@ body{
     align-self: start;
     overflow: hidden;
     text-wrap: nowrap;
-    transition: 300ms ease-in-out;
+    transition: width 300ms ease-in-out,
+                padding 300ms ease-in-out,
+                background-color 250ms ease,
+                border-color 250ms ease;
+
 }
 #sidebar ul{
     list-style: none;
@@ -249,10 +253,7 @@ main p{
     margin-left: 1.8em;
 }
 
-.logo {
-    width: 25dvh;
-    height: 25dvh;
-}
+
 
 #theme-toggle{
     position: fixed;
@@ -277,7 +278,6 @@ body.light-theme #theme-toggle .icon-moon{ display: none;}
 body.light-theme #theme-toggle .icon-sun{ display: block;}
 
 body,
-#sidebar,
 .container,
 #pomodoro,
 .container-dev,
@@ -289,6 +289,10 @@ button{
                 border-color 250ms ease, fill 250ms ease;
 }
 
+
+.icon-moon, .icon-sun{
+    fill: var(--text-clr);
+}
 
 @media(min-width:801px){
     #sidebar ul{

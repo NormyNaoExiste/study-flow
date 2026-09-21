@@ -109,6 +109,10 @@ function changeScene(sceneName){
         if(sceneName == 'materias'){
             mostrarMateria();
         }
+        if(sceneName == 'tarefas'){
+            prencherSelectCategorias();
+            mostrarTarefas();
+        }
     } else{
         alert(`cena ${sceneName} não existe`)
     }
@@ -217,9 +221,24 @@ function reiniciarCronometro(){
 //tarefas
 
 let tarefas = []
+let filtroCategoriaAtual = ""
+
+function prencherSelectCategorias(){
+    const select = document.getElementById("select-categoria-tarefa");
+    if(!select) return;
+
+    select.innerHTML = `<option value="">Sem categoria</option>`;
+
+    materias.forEach((materia)=>{
+        const opcao = document.createElement("option");
+        opcao.value = materia
+        opcao.textContent = materia
+        select.appendChild(opcao)
+    })
+}
 
 document.addEventListener("submit", (e) =>{
-    if(e.target.id !== "form-materia"){
+    if(e.target.id !== "form-tarefa"){
         return
     }
     e.preventDefault()
@@ -239,6 +258,7 @@ document.addEventListener("submit", (e) =>{
     });
 
     campoTexto.value = "";
+    mostrarTarefas()
 })
 
 function mostrarFiltroCategorias(){
@@ -248,7 +268,7 @@ function mostrarFiltroCategorias(){
     container.innerHTML = '';
 
     const categorisaUsadas = tarefas.map(t => t.categoria || "sem categoria");
-    const categoriasUnicas = ["Todas", new Set(categorisaUsadas)]
+    const categoriasUnicas = ["Todas", ...new Set(categorisaUsadas)]
 
     categoriasUnicas.forEach((categoria) =>{
         const botao = document.createElement("button")
@@ -286,14 +306,27 @@ function mostrarTarefas(){
     }
 
     tarefasFiltradas.forEach((tarefa)=>{
-        const categoriaTesxto = tarefa.categoria || "sem categoria"
+        const categoriaTexto = tarefa.categoria || "sem categoria"
 
         const cartao = document.createElement("div");
         cartao.className = "cartao-tarefa";
-        cartao.innerHTML = `<>`
-    })
-}
+        cartao.innerHTML = `<div class="info-tarefa">
+                                <span class="categoria-tag">
+                                    ${categoriaTexto}
+                                </span>
+                                <p>${tarefa.texto}</p>
+                                </div>
+                            <button onclick="removerTarefa(${tarefa.id})">x</button>`;
 
+                            container.appendChild(cartao);
+        
+    })
+
+}
+function removerTarefa(id){
+    tarefas = tarefas.filter(t => t.id !== id);
+    mostrarTarefas();
+}
 
 
 
