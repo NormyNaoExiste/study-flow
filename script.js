@@ -10,9 +10,11 @@ const cenas = {
        <div class="home-grid">
             <div class="container home-card">
                 <h2>Materias</h2>
+                <p id="conteudo-materias-main">Materias:</p>
             </div>
             <div class="container home-card">
                 <h2>Tarefas</h2>
+                <p id="conteudo-tarefas-main">Tarefas: nenhuma</p>
             </div>
        </div>
        <div class="container">
@@ -80,19 +82,19 @@ const cenas = {
             <div class="container-dev">
                 <img src="https://github.com/NormyNaoExiste.png" class="photo">
                 <div>
-                    <h2>Davi Felipe</h2>
-                    <p>Desenvolvedor front-end</p>
+                    <a href="https://github.com/NormyNaoExiste/"><h2>Davi Felipe</h2>
+                    <p>Desenvolvedor front-end</p></a>
                 </div>
             </div>
             <div class="container-dev">
-                <img src="photos/aspanLogo.webp" class="photo">
+                <img src="https://github.com/Danielle-sys-tech.png" class="photo">
                 <div>
                     <h2>Danielle Heloisa</h2>
                     <p>Desenvolvedora mobile</p>
                 </div>
             </div>
             <div class="container-dev">
-                <img src="photos/aspanLogo.webp" class="photo">
+                <img src="https://github.com/leoMnZs.png" class="photo">
                 <div>
                     <h2>Leonador Menezes</h2>
                     <p>Desenvolvedor mobile</p>
@@ -125,6 +127,12 @@ function changeScene(sceneName){
     if(cenas[sceneName]){
         mainPage.innerHTML = cenas[sceneName]
 
+        if(sceneName == 'home'){
+            const txtHomeMaterias = document.getElementById("conteudo-materias-main")
+            const txtHomeTarefas = document.getElementById("conteudo-tarefas-main")
+            txtHomeMaterias.innerText = `Materias: ${materias}`
+            txtHomeTarefas.innerText = `Tarefas: ${tarefas.length}`
+        }
         if(sceneName == 'pomodoro'){
             atualizarTelaDoTempo();
             document.getElementById('botao-iniciar').textContent = cronometroLigado ? "Pausar":"Iniciar";

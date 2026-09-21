@@ -294,6 +294,11 @@ button{
     fill: var(--text-clr);
 }
 
+#creditos a{
+    text-decoration: none;
+}
+
+
 @media(min-width:801px){
     #sidebar ul{
         display: flex;
