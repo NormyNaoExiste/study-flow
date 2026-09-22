@@ -16,6 +16,7 @@ body.light-theme{
     --text-clr: #1B2C6B;
     --secondary-text: #405070;
     --accent-clr: #1B2CC1;
+    --danger-clr: #E5484D;
 }
 
 
@@ -253,7 +254,102 @@ main p{
     margin-left: 1.8em;
 }
 
+.container form{
+    display: flex;
+    flex-wrap: wrap;
+    gap: .75em;
+    margin-top: 1.5em;
+}
 
+.container input[type="text"],
+.container select{
+    flex: 1 1 200px;
+    min-width: 0;
+    padding: .75em 1em;
+    font: inherit;
+    color: var(--text-clr);
+    background-color: transparent;
+    border: 1px solid var(--line-clr);
+    border-radius: .5em;
+    transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.container input::placeholder{
+    color: var(--secondary-text);
+    opacity: .6;
+}
+
+.container input[type="text"]:focus,
+.container select:focus{
+    outline: none;
+    border-color: var(--hover-clr);
+    box-shadow: 0 0 0 3px rgba(42, 131, 95, 0.15);
+}
+
+.container select option{
+    background-color: var(--base-clr);
+    color: var(--text-clr);
+}
+
+.botaoPrimario{
+    padding: .75em 1.4em;
+    font: inherit;
+    font-weight: 600;
+    color: #fff;
+    background-color: var(--accent-clr);
+    border: none;
+    border-radius: .5em;
+    cursor: pointer;
+    transition: filter 150ms ease, transform 100ms;
+}
+
+.botaoPrimario:hover{ filter: brightness(1.25);}
+.botaoPrimario:active{ transform: scale(.97);}
+
+.cartao button,
+.cartao-tarefa button{
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    font: inherit;
+    line-height: 1;
+    color: var(--secondary-text);
+    background: none;
+    border: 1px solid var(--line-clr);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.cartao button:hover,
+.cartao-tarefa button:hover{
+    color: #fff;
+    background-color: var(--danger-clr);
+    border-color: var(--danger-clr);
+}
+
+#lista-materias{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: .75em;
+    margin-top: 1.5em;
+}
+
+.cartao{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1em;
+    padding: .9em 1.1em;
+    color: var(--text-clr);
+    overflow-wrap: anywhere;
+    border: 1px solid var(--line-clr);
+    border-radius: .75em;
+    transition: border-color 150ms ease, background-color 150ms ease;
+}
+.cartao:hover{
+    border-color: var(--hover-clr);
+    background-color: rgba(42, 131, 95, 0.15);
+}
 
 #theme-toggle{
     position: fixed;
