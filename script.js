@@ -144,6 +144,10 @@ function changeScene(sceneName){
             prencherSelectCategorias();
             mostrarTarefas();
         }
+        if(sceneName == 'flashcards'){
+            preencherSelectFlashcards();
+            mostrarFlashcard();
+        }
     } else{
         alert(`cena ${sceneName} não existe`)
     }
@@ -361,6 +365,108 @@ function removerTarefa(id){
 
 //Flashcards
 
+let flashcards = []
+let indiceFlashcardAtual = 0
+let flashcardVirado = false;
+
+document.addEventListener("submit" ,(e) =>{
+    if(e.target.id !== "form-flashcard"){
+        return
+    }
+    e.preventDefault();
+
+    const campoFrente = document.getElementById("input-frente");
+    const campoVerso = document.getElementById("input-verso");
+    const campoCategoria = document.getElementById("select-categoria-flashcard");
+
+    const frente = campoFrente.value.trim();
+    const verso = campoVerso.value.trim();
+    const categoria = campoCategoria.value;
+
+    if(frente === "" || verso === "") return;
+
+    flashcards.push({
+        id:Date.now(),
+        frente: frente,
+        verso: verso,
+        categoria: categoria
+    })
+
+    campoFrente.value = ""
+    campoVerso.value = "";
+
+    indiceFlashcardAtual = flashcards.length - 1;
+    flashcardVirado = false;
+    mostrarFlashcard();
+})
+
+function mostrarFlashcard(){
+    const textoEl = document.getElementById('texto-flashcard');
+    const contadorEl = document.getElementById('contador-flashcard');
+    const excluirBtn = document.getElementById('botao-excluir-flashcard');
+    
+    if(!textoEl || !contadorEl) return;
+
+    if(flashcards.length === 0){
+        textoEl.textContent = "Nenhum cartão ainda";
+        contadorEl.textContent = "";
+        if(excluirBtn) excluirBtn.style.display = "none";
+        return
+    }
+
+    if(excluirBtn) excluirBtn.style.display = "inline-block";
+
+    const cartaoAtual = flashcards[indiceFlashcardAtual];
+    textoEl.textContent = flashcardVirado ? cartaoAtual.verso : cartaoAtual.frente;
+    contadorEl.textContent = (indiceFlashcardAtual + 1) + " / " + flashcards.length;
+}
+
+function preencherSelectFlashcards(){
+    const select = document.getElementById('select-categoria-flashcard');
+    if(!select) return;
+
+    select.innerHTML = `<option value=""> Sem categoria </option>`;
+
+    materias.forEach((materia)=>{
+        const opcao = document.createElement("option");
+        opcao.value = materia
+        opcao.textContent = materia
+        select.appendChild(opcao)
+    })
+}
+
+function virarFlashcard(){
+    if(flashcards.length === 0) return;
+    flashcardVirado = !flashcardVirado;
+    mostrarFlashcard();
+}
+
+function cartaoAnterior(){
+    if(flashcards.length === 0) return
+    indiceFlashcardAtual = (indiceFlashcardAtual - 1 + flashcards.length) % flashcards.length;
+    flashcardVirado = false;
+    mostrarFlashcard();
+}
+
+function proximoCartao(){
+    if(flashcards.length === 0) return
+    indiceFlashcardAtual = (indiceFlashcardAtual + 1) % flashcards.length;
+    flashcardVirado = false;
+    mostrarFlashcard();
+}
+
+function removerFlashcardAtual(){
+    if(flashcards.length === 0) return;
+
+    flashcards.splice(indiceFlashcardAtual, 1);
+
+    if(indiceFlashcardAtual >= flashcards.length){
+        indiceFlashcardAtual = Math.max(0, flashcards.length - 1);
+    }
+
+    flashcardVirado = false;
+    mostrarFlashcard();
+}
 
 
 
