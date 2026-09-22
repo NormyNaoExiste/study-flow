@@ -351,6 +351,84 @@ main p{
     background-color: rgba(42, 131, 95, 0.15);
 }
 
+/* tarefas */
+#filtro-categorias{
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5em;
+    margin: 1.5em 0 .5em ;
+}
+
+.botao-filtro,
+#navegacao-flashcard button{
+    padding: .45em 1em;
+    font: inherit;
+    font-size: .875em;
+    color: var(--secondary-text);
+    background: none;
+    border: 1px solid var(--line-clr);
+    border-radius: 999px;
+    cursor: pointer;
+}
+
+.botao-filtro:hover,
+#navegacao-flashcard button:hover{
+    color: var(--text-clr);
+    background-color: rgba(42, 131, 95, 0.15);
+    border-color: var(--hover-clr);
+}
+
+.botao-filtro.ativo{
+    color: #fff;
+    background-color: var(--accent-clr);
+    border-color: var(--accent-clr);
+}
+
+#lista-tarefas > p{
+    margin-top: 1.5em;
+    text-align: center;
+    font-style: inherit;
+}
+
+.cartao-tarefa{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1em;
+    margin-top: .75em;
+    padding: .9em 1.1em;
+    border: 1px solid var(--line-clr);
+    border-radius: .75em;
+    transition: border-color 150ms ease, background-color 150ms ease;
+}
+
+.cartao-tarefa:hover{
+    border-color: var(--hover-clr);
+    background-color: rgba(42, 131, 95, 0.12);
+}
+
+.info-tarefa{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .35em;
+    min-width: 0;
+}
+
+.info-tarefa p{
+    margin: 0;
+    color: var(--text-clr);
+    overflow-wrap: anywhere;
+}
+
+.categoria-tag{
+    padding: .1em .75em;
+    font-size: .75rem;
+    color: var(--secondary-text);
+    background-color: var(--line-clr);
+    border-radius: 999px;
+}
+
 #theme-toggle{
     position: fixed;
     bottom: 24px;
@@ -435,6 +513,15 @@ button{
 
     .container-dev h2, .container-dev p{
         padding: 0;
+    }
+    .container form .botaoPrimario{
+        width: 100%;
+    }
+    #cartao-flashcard{
+        min-height: 180px;
+    }
+    #texto-flashcard{
+        font-size: 1.2rem;
     }
     #sidebar{
         height: 60px;
