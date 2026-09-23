@@ -168,7 +168,7 @@ function toggleActive(clicado){
 
 //materias
 
-let materias = [];
+let materias = carregarDados("lumi_materias", []);
 
 const formMateria = document.getElementById("form-materia");
 
@@ -184,6 +184,7 @@ document.addEventListener("submit", (e)=>{
     if(texto == "") return;
 
     materias.push(texto);
+    salvarDados("lumi_materias", materias)
     campo.value = "";
     mostrarMateria();
 })
@@ -202,6 +203,7 @@ function mostrarMateria(){
 
 function removerMateria(indice){
     materias.splice(indice, 1);
+    salvarDados("lumi_materias", materias)
     mostrarMateria();
 }
 
@@ -255,7 +257,7 @@ function reiniciarCronometro(){
 
 //tarefas
 
-let tarefas = []
+let tarefas = carregarDados("lumi_tarefas", [])
 let filtroCategoriaAtual = ""
 
 function prencherSelectCategorias(){
@@ -291,7 +293,7 @@ document.addEventListener("submit", (e) =>{
         texto: texto,
         categoria: categoria
     });
-
+    salvarDados("lumi_tarefas", tarefas)
     campoTexto.value = "";
     mostrarTarefas()
 })
@@ -360,12 +362,13 @@ function mostrarTarefas(){
 }
 function removerTarefa(id){
     tarefas = tarefas.filter(t => t.id !== id);
+    salvarDados("lumi_tarefas", tarefas)
     mostrarTarefas();
 }
 
 //Flashcards
 
-let flashcards = []
+let flashcards = carregarDados("lumi_flashcards", [])
 let indiceFlashcardAtual = 0
 let flashcardVirado = false;
 
@@ -392,6 +395,7 @@ document.addEventListener("submit" ,(e) =>{
         categoria: categoria
     })
 
+    salvarDados("lumi_flashcards", flashcards)
     campoFrente.value = ""
     campoVerso.value = "";
 
@@ -466,10 +470,9 @@ function removerFlashcardAtual(){
     }
 
     flashcardVirado = false;
+    salvarDados("lumi_flashcards", flashcards)
     mostrarFlashcard();
 }
-
-
 
 
 //mudar o tema
@@ -485,5 +488,23 @@ function carregarTema(){
     const temaSalvo = localStorage.getItem('tema')
     if(temaSalvo === 'light'){
         document.body.classList.add('light-theme')
+    }
+}
+
+//salvar e carregar
+
+function salvarDados(chave, dados){
+    localStorage.setItem(chave, JSON.stringify(dados));
+}
+
+function carregarDados(chave, valorPadrao){
+    const salvo = localStorage.getItem(chave)
+    if(!salvo) return valorPadrao;
+
+    try{
+        return JSON.parse(salvo);
+    } catch(erro){
+        console.error(`Erro ao ler "${chave}" do armazenamento local`, erro)
+        return valorPadrao
     }
 }
