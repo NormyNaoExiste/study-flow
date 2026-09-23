@@ -429,6 +429,92 @@ main p{
     border-radius: 999px;
 }
 
+#area-flashcard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25em;
+    margin-top: 2em;
+}
+
+#cartao-flashcard{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: min(100%, 520px);
+    min-height: 220px;
+    padding: 2em 2em 2.5em;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+    background-color: rgba(42, 131, 95, 0.8);
+    border: 2px solid var(--line-clr);
+    border-radius: 1.25em;
+    transition: transform 150ms ease, border-color 150ms ease, background-color 250ms,
+    box-shadow 150ms ease;
+}
+
+#cartao-flashcard:hover{
+    transform: translateY(-3px);
+    border-color: var(--hover-clr);
+    box-shadow: 0 8px 24px rbga(0, 0, 0, .18);
+}
+
+#cartao-flashcard::after{
+    content: "Clique para virar";
+    position: absolute;
+    bottom: .75em;
+    font-size: .75rem;
+    color: var(--secondary-text);
+    opacity: 7;
+}
+
+#texto-flashcard{
+    margin: 0;
+    font-size: 1.4rem;
+    line-height: 1.6;
+    color: var(--text-clr);
+    overflow-wrap: anywhere;
+}
+
+#cartao-flashcard.virado{
+    background-color: var(--accent-clr);
+    border-color: var(--accent-clr);
+}
+#cartao-flashcard.virado, #texto-flashcard,
+#cartao-flashcard.virado::after{
+    color: #fff;
+}
+
+#navegacao-flashcard{
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+#contador-flashcard{
+    min-width: 4ch;
+    text-align: center;
+    font-size: .9rem;
+    color: var(--secondary-text);
+}
+
+#botao-excluir-flashcard{
+    padding: .45em 1em;
+    font: inherit;
+    font-size: .875rem;
+    color: var(--danger-clr);
+    background: none;
+    border: 1px solid var(--danger-clr);
+    border-radius: .5em;
+    cursor: pointer;
+}
+#botao-excluir-flashcard:hover{
+    color: #fff;
+    background-color: var(--danger-clr);
+}
+
 #theme-toggle{
     position: fixed;
     bottom: 24px;

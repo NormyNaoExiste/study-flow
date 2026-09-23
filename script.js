@@ -32,7 +32,7 @@ const cenas = {
             <h2>Materias</h2>
             <form id="form-materia">
                 <input type="text" id="input-materia"
-                placeholder="Ex:materia aqui">
+                placeholder="Ex: Materia aqui">
                 <button type="submit" class="botaoPrimario">Adicionar</button>
             </form>
             <div id="lista-materias">
@@ -438,6 +438,7 @@ function preencherSelectFlashcards(){
 function virarFlashcard(){
     if(flashcards.length === 0) return;
     flashcardVirado = !flashcardVirado;
+    document.getElementById("cartao-flashcard").classList.toggle("virado")
     mostrarFlashcard();
 }
 
