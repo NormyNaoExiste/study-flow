@@ -99,10 +99,15 @@ const cenas = {
             <div class="container-dev">
                 <img src="https://github.com/leoMnZs.png" class="photo">
                 <div>
+<<<<<<< HEAD
                     <a href="https://github.com/leoMnZs">
                         <h2>Leonardo Menezes</h2>
                         <p>Desenvolvedor mobile</p>
                     </a>
+=======
+                    <h2>Leonardo Menezes</h2>
+                    <p>Desenvolvedor mobile</p>
+>>>>>>> 7f8abf2a6513a862d097b4156085e62f115c216b
                 </div>
             </div>
         </div>`

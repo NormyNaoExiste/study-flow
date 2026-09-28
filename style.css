@@ -1,22 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
 
 :root{
-    --base-clr: #092328;
-    --line-clr: #12544F;
-    --hover-clr: #2A835F;
-    --text-clr: #7692FF;
-    --secondary-text: #ABD2FA;
-    --accent-clr: #1B2CC1;
+    --base-clr: #0D0B10;
+    --line-clr: #342e3e;
+    --hover-clr: #3e2355;
+    --text-clr: #9061ef;
+    --secondary-text: #f0eef4;
+    --accent-clr: #ffffff;
+    --button-clr: #3e2355;
+    --danger-clr: #E5484D;
 }
 
 body.light-theme{
-    --base-clr: #F4F7FA;
-    --line-clr: #D6E1E5;
-    --hover-clr: #CFE8DC;
-    --text-clr: #1B2C6B;
-    --secondary-text: #405070;
-    --accent-clr: #1B2CC1;
+    --base-clr: #F8F6FA;
+    --line-clr: #D8D2DE;
+    --hover-clr: #E8DDF0;
+    --text-clr: #6B3DB5;
+    --secondary-text: #3A3540;
+    --accent-clr: #1A1520;
     --danger-clr: #E5484D;
+    --button-clr: #7B4CC2;
 }
 
 
@@ -200,7 +203,7 @@ main p{
     button:hover{
         border: 1px solid var(--hover-clr);
         background-color: var(--hover-clr);
-        color: var(--line-clr);
+       
         cursor: pointer;
     }
 }
@@ -218,7 +221,7 @@ main p{
 }
 .home-card:hover{
     border-color: var(--hover-clr);
-    background-color: rgba(42, 131, 95, 0.15);
+    background-color: var(--hover-clr);
 }
 
 .container-dev{
@@ -296,7 +299,7 @@ main p{
     font: inherit;
     font-weight: 600;
     color: #fff;
-    background-color: var(--accent-clr);
+    background-color: var(--button-clr);
     border: none;
     border-radius: .5em;
     cursor: pointer;
@@ -347,8 +350,8 @@ main p{
     transition: border-color 150ms ease, background-color 150ms ease;
 }
 .cartao:hover{
-    border-color: var(--hover-clr);
-    background-color: rgba(42, 131, 95, 0.15);
+    border-color: var(--line-clr);
+    background-color: var(--hover-clr);
 }
 
 /* tarefas */
@@ -373,16 +376,17 @@ main p{
 
 .botao-filtro:hover,
 #navegacao-flashcard button:hover{
-    color: var(--text-clr);
-    background-color: rgba(42, 131, 95, 0.15);
+    color: #ffffff;
+    background-color: var(--button-clr);
     border-color: var(--hover-clr);
 }
 
 .botao-filtro.ativo{
-    color: #fff;
-    background-color: var(--accent-clr);
-    border-color: var(--accent-clr);
+    color: #ffffff;
+    background-color: var(--button-clr);
+    border-color: var(--hover-clr);
 }
+.botao-filtro.ativo:hover{ filter: brightness(1.25);}
 
 #lista-tarefas > p{
     margin-top: 1.5em;
@@ -403,8 +407,8 @@ main p{
 }
 
 .cartao-tarefa:hover{
-    border-color: var(--hover-clr);
-    background-color: rgba(42, 131, 95, 0.12);
+    border-color: var(--line-clr);
+    background-color: var(--hover-clr);
 }
 
 .info-tarefa{
@@ -449,7 +453,7 @@ main p{
     text-align: center;
     cursor: pointer;
     user-select: none;
-    background-color: rgba(42, 131, 95, 0.8);
+    background-color: var(--button-clr);
     border: 2px solid var(--line-clr);
     border-radius: 1.25em;
     transition: transform 150ms ease, border-color 150ms ease, background-color 250ms,
@@ -459,7 +463,7 @@ main p{
 #cartao-flashcard:hover{
     transform: translateY(-3px);
     border-color: var(--hover-clr);
-    box-shadow: 0 8px 24px rbga(0, 0, 0, .18);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .18);
 }
 
 #cartao-flashcard::after{
@@ -467,7 +471,7 @@ main p{
     position: absolute;
     bottom: .75em;
     font-size: .75rem;
-    color: var(--secondary-text);
+    color: #ffffff;
     opacity: 7;
 }
 
@@ -475,14 +479,17 @@ main p{
     margin: 0;
     font-size: 1.4rem;
     line-height: 1.6;
-    color: var(--text-clr);
+    color: #ffffff;
     overflow-wrap: anywhere;
 }
 
 #cartao-flashcard.virado{
-    background-color: var(--accent-clr);
-    border-color: var(--accent-clr);
+    background-color: var(--button-clr);
+    border-color: var(--line-clr);
+    filter: brightness(1.50);
 }
+
+
 #cartao-flashcard.virado, #texto-flashcard,
 #cartao-flashcard.virado::after{
     color: #fff;
