@@ -14,6 +14,6 @@
 - Abra ![esse link](https://normynaoexiste.github.io/study-flow/) para utilizar!
 
 ## Autores
-- Davi Felipe - ![NormyNaoExiste]()
-- Leonardo Menezes - ![LeonardoMnZs]()
-- Danielle Heloisa - ![Danielle-sys-tech]()
+- Davi Felipe - ![NormyNaoExiste](https://github.com/NormyNaoExiste)
+- Leonardo Menezes - ![leoMnZs](https://github.com/leoMnZs)
+- Danielle Heloisa - ![Danielle-sys-tech](https://github.com/Danielle-sys-tech)
