@@ -6,6 +6,7 @@ const cenas = {
     home: `<div class="container">
             <h2>Bem-vindo a Lumi!</h2>
             <p>Seu app favorito para matérias e tarefas!</p>
+            <p id="visita"></p>
         </div>
        <div class="home-grid">
             <div class="container home-card">
@@ -14,7 +15,7 @@ const cenas = {
             </div>
             <div class="container home-card">
                 <h2>Tarefas</h2>
-                <p id="conteudo-tarefas-main">Tarefas: nenhuma</p>
+                <p id="conteudo-tarefas-main">Tarefas:</p>
             </div>
        </div>
        <div class="container">
@@ -89,15 +90,19 @@ const cenas = {
             <div class="container-dev">
                 <img src="https://github.com/Danielle-sys-tech.png" class="photo">
                 <div>
-                    <h2>Danielle Heloisa</h2>
-                    <p>Desenvolvedora mobile</p>
+                    <a href="https://github.com/Danielle-sys-tech">
+                        <h2>Danielle Heloisa</h2>
+                        <p>Desenvolvedora mobile</p>
+                    </a>
                 </div>
             </div>
             <div class="container-dev">
                 <img src="https://github.com/leoMnZs.png" class="photo">
                 <div>
-                    <h2>Leonador Menezes</h2>
-                    <p>Desenvolvedor mobile</p>
+                    <a href="https://github.com/leoMnZs">
+                        <h2>Leonardo Menezes</h2>
+                        <p>Desenvolvedor mobile</p>
+                    </a>
                 </div>
             </div>
         </div>`
@@ -113,6 +118,7 @@ function toggleSidebar(){
     })
 }
 
+
 function toggleSubMenu(button){
     button.nextElementSibling.classList.toggle('show')
     button.classList.toggle('rotate')
@@ -123,15 +129,43 @@ function toggleSubMenu(button){
     }
 }
 
+// Boas vindas muahaha
+
+let visitas = 0
+
+function contarVisitas(){
+    try{
+        visitas = parseInt(localStorage.getItem("visitas"), 10) || 0;
+        visitas += 1
+        localStorage.setItem("visitas", visitas)
+    }
+    catch (error){
+        console.error(error)
+    }
+    return visitas
+}
+
+const visit = contarVisitas();
+
+
+
 function changeScene(sceneName){
     if(cenas[sceneName]){
         mainPage.innerHTML = cenas[sceneName]
 
         if(sceneName == 'home'){
-            const txtHomeMaterias = document.getElementById("conteudo-materias-main")
-            const txtHomeTarefas = document.getElementById("conteudo-tarefas-main")
-            txtHomeMaterias.innerText = `Materias: ${materias}`
+            const txtHomeMaterias = document.getElementById("conteudo-materias-main");
+            const txtHomeTarefas = document.getElementById("conteudo-tarefas-main");
+            const visitaTexto = document.querySelector("#visita");
+            txtHomeMaterias.innerText = materias.length === 0 ? "Nenhuma materia": `Materias: ${materias.join(", ")}`
             txtHomeTarefas.innerText = `Tarefas: ${tarefas.length}`
+
+            if(visit <= 1){
+                visitaTexto.textContent = "Boas vindas muahaha"
+            }
+            else{
+                visitaTexto.textContent = `Opa, voce visitou o site: ${visit} vezes`;
+            }
         }
         if(sceneName == 'pomodoro'){
             atualizarTelaDoTempo();

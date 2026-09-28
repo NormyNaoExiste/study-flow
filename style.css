@@ -649,10 +649,6 @@ button{
 
         ul li .sub-menu{
             position: fixed;
-        }
-
-        ul li .sub-menu.show{
-            position: fixed;
             bottom: 60px;
             left: 0;
             box-sizing: border-box;
@@ -662,10 +658,29 @@ button{
             display: flex;
             justify-content: center;
 
+            transform: translateY(100%);
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: transform 300ms ease-in-out,
+                opacity 300ms ease-in-out,
+                visibility 0s linear 300ms;
+
             > div{
-                overflow-x: auto ;
+                overflow-x: auto;
             }
+
         }
+         
+        ul li .sub-menu.show{
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+                pointer-events: auto;
+                 transition: transform 300ms ease-in-out,
+                opacity 300ms ease-in-out,
+                visibility 0s;
+            }
 
         li{
             display: inline-flex;
@@ -678,8 +693,8 @@ button{
         }
     }
     #theme-toggle{
-        bottom: 76px;
-        right: 16px;
+        bottom: 8px;
+        right: 8px;
         width: 46px;
         height: 46px;
     }

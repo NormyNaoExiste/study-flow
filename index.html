@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="assets/gato.svg" type="image/svg+xml">
 </head>
-<body onload="carregarTema()">
+<body onload="carregarTema(), changeScene('home')">
     
     <nav id="sidebar">
         <ul>
@@ -65,13 +65,16 @@
         <div class="container">
             <h2>Bem-vindo a Lumi!</h2>
             <p>Seu app favorito para matérias e tarefas!</p>
+            <p id="visita"></p>
         </div>
        <div class="home-grid">
             <div class="container home-card">
                 <h2>Materias</h2>
+                <p id="conteudo-materias-main">Clique em home para ver!</p>
             </div>
             <div class="container home-card">
                 <h2>Tarefas</h2>
+                <p id="conteudo-tarefas-main">Clique em home para ver!</p>
             </div>
        </div>
        <div class="container">
