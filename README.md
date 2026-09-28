@@ -3,7 +3,7 @@
 # Lumi - o App de estudos
 
 ## Página inicial:
-    ![tela inicial](photos/home.png)
+![tela inicial](photos/home.png)
 
 ## O que Lumi proporciona?
 - Criação de tarefas
@@ -11,9 +11,9 @@
 - Versão web compativel com celulares
 
 ## Como usar?
-- Abra ![esse link](https://normynaoexiste.github.io/study-flow/) para utilizar!
+- Abra [esse link](https://normynaoexiste.github.io/study-flow/) para utilizar!
 
 ## Autores
-- Davi Felipe - ![NormyNaoExiste](https://github.com/NormyNaoExiste)
-- Leonardo Menezes - ![leoMnZs](https://github.com/leoMnZs)
-- Danielle Heloisa - ![Danielle-sys-tech](https://github.com/Danielle-sys-tech)
+- Davi Felipe - [NormyNaoExiste](https://github.com/NormyNaoExiste)
+- Leonardo Menezes - [leoMnZs](https://github.com/leoMnZs)
+- Danielle Heloisa - [Danielle-sys-tech](https://github.com/Danielle-sys-tech)
