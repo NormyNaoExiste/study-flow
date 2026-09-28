@@ -96,7 +96,7 @@ const cenas = {
             <div class="container-dev">
                 <img src="https://github.com/leoMnZs.png" class="photo">
                 <div>
-                    <h2>Leonador Menezes</h2>
+                    <h2>Leonardo Menezes</h2>
                     <p>Desenvolvedor mobile</p>
                 </div>
             </div>
