@@ -108,6 +108,9 @@ const cenas = {
         </div>`
 }
 
+
+   
+
 function toggleSidebar(){
     sidebar.classList.toggle('close')
     toggleButton.classList.toggle('rotate')
@@ -509,21 +512,29 @@ function removerFlashcardAtual(){
 }
 
 
-//mudar o tema
+const temas = ['dark', 'light', 'green', 'blue'];
 
-function trocarTema(){
-    document.body.classList.toggle('light-theme');
-    const temaAtual = document.body.classList.contains('light-theme') ?
-    'light' : 'dark';
-    localStorage.setItem('tema', temaAtual);
+function aplicarTema(tema) {
+    // remove todas as classes de tema
+    temas.forEach(t => document.body.classList.remove(`${t}-theme`));
+    // adiciona a do tema escolhido
+    document.body.classList.add(`${tema}-theme`);
+    localStorage.setItem('tema', tema);
 }
 
-function carregarTema(){
-    const temaSalvo = localStorage.getItem('tema')
-    if(temaSalvo === 'light'){
-        document.body.classList.add('light-theme')
-    }
+function trocarTema() {
+    const atual = localStorage.getItem('tema') || 'dark';
+    const proximoIndice = (temas.indexOf(atual) + 1) % temas.length;
+    aplicarTema(temas[proximoIndice]);
 }
+
+function carregarTema() {
+    const temaSalvo = localStorage.getItem('tema') || 'dark';
+    aplicarTema(temaSalvo);
+}
+
+
+
 
 //salvar e carregar
 

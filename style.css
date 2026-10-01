@@ -13,7 +13,7 @@
 
 body.light-theme{
     --base-clr: #F8F6FA;
-    --line-clr: #D8D2DE;
+    --line-clr: #d2dedb;
     --hover-clr: #E8DDF0;
     --text-clr: #6B3DB5;
     --secondary-text: #3A3540;
@@ -21,6 +21,30 @@ body.light-theme{
     --danger-clr: #E5484D;
     --button-clr: #7B4CC2;
 }
+
+body.green-theme{
+    --base-clr: #c7f0cf;
+    --line-clr: #4d5952;
+    --hover-clr: #a3e5c9;
+    --text-clr: #286534;
+    --secondary-text: #354036;
+    --accent-clr: #1A1520;
+    --danger-clr: #E5484D;
+    --button-clr: #047338;
+}
+
+body.blue-theme{
+    --base-clr: #a8c5e8;
+    --line-clr: #2b4659;
+    --hover-clr: #99bcef;
+    --text-clr: #264759;
+    --secondary-text: #354036;
+    --accent-clr: #1A1520;
+    --danger-clr: #E5484D;
+    --button-clr: #047338;
+}
+
+
 
 
 *{
@@ -428,8 +452,8 @@ main p{
 .categoria-tag{
     padding: .1em .75em;
     font-size: .75rem;
-    color: var(--secondary-text);
-    background-color: var(--line-clr);
+    color: #ffffff;
+    background-color: var(--button-clr);
     border-radius: 999px;
 }
 
@@ -541,8 +565,32 @@ main p{
 #theme-toggle .icon-sun{
     display: none;
 }
+
+#theme-toggle .icon-grass{
+    display: none;
+}
+
+#theme-toggle .icon-cloud{
+    display: none;
+}
+
 body.light-theme #theme-toggle .icon-moon{ display: none;}
 body.light-theme #theme-toggle .icon-sun{ display: block;}
+body.light-theme #theme-toggle .icon-grass{ display: none;}
+body.light-theme #theme-toggle .icon-cloud{ display: none;}
+
+body.blue-theme #theme-toggle .icon-moon{ display: none;}
+body.blue-theme #theme-toggle .icon-sun{ display: none;}
+body.blue-theme #theme-toggle .icon-grass{ display: none;}
+body.blue-theme #theme-toggle .icon-cloud{ display: block;}
+
+body.green-theme #theme-toggle .icon-moon{ display: none;}
+body.green-theme #theme-toggle .icon-sun{ display: none;}
+body.green-theme #theme-toggle .icon-grass{ display: block;}
+body.green-theme #theme-toggle .icon-cloud{ display: none;}
+
+
+
 
 body,
 .container,
@@ -557,7 +605,7 @@ button{
 }
 
 
-.icon-moon, .icon-sun{
+.icon-moon, .icon-sun, .icon-grass, .icon-cloud{
     fill: var(--text-clr);
 }
 
