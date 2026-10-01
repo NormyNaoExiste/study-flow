@@ -24,7 +24,7 @@ body.light-theme{
 
 body.green-theme{
     --base-clr: #c7f0cf;
-    --line-clr: #4d5952;
+    --line-clr: #aad1b1;
     --hover-clr: #a3e5c9;
     --text-clr: #286534;
     --secondary-text: #354036;
@@ -34,14 +34,25 @@ body.green-theme{
 }
 
 body.blue-theme{
-    --base-clr: #a8c5e8;
-    --line-clr: #2b4659;
-    --hover-clr: #99bcef;
-    --text-clr: #264759;
+    --base-clr: #a9b6f2;
+    --line-clr: #8e9ad3;
+    --hover-clr: #9ca9f1;
+    --text-clr: #2432c2;
     --secondary-text: #354036;
     --accent-clr: #1A1520;
     --danger-clr: #E5484D;
-    --button-clr: #047338;
+    --button-clr: #3f4cd9;
+}
+
+body.brown-theme{
+    --base-clr: #17100e;
+    --line-clr: #3a2824;
+    --hover-clr: #271e1a;
+    --text-clr: #a17660;
+    --secondary-text: #c7a396;
+    --accent-clr: #ece9ef;
+    --danger-clr: #E5484D;
+    --button-clr: #3a2824;
 }
 
 
@@ -574,20 +585,34 @@ main p{
     display: none;
 }
 
+#theme-toggle .icon-cookie{
+    display: none;
+}
+
 body.light-theme #theme-toggle .icon-moon{ display: none;}
 body.light-theme #theme-toggle .icon-sun{ display: block;}
 body.light-theme #theme-toggle .icon-grass{ display: none;}
 body.light-theme #theme-toggle .icon-cloud{ display: none;}
+body.light-theme #theme-toggle .icon-cookie{ display: none}
 
 body.blue-theme #theme-toggle .icon-moon{ display: none;}
 body.blue-theme #theme-toggle .icon-sun{ display: none;}
 body.blue-theme #theme-toggle .icon-grass{ display: none;}
 body.blue-theme #theme-toggle .icon-cloud{ display: block;}
+body.blue-theme #theme-toggle .icon-cookie{ display: none}
 
 body.green-theme #theme-toggle .icon-moon{ display: none;}
 body.green-theme #theme-toggle .icon-sun{ display: none;}
 body.green-theme #theme-toggle .icon-grass{ display: block;}
 body.green-theme #theme-toggle .icon-cloud{ display: none;}
+body.green-theme #theme-toggle .icon-cookie{ display: none}
+
+body.brown-theme #theme-toggle .icon-moon{ display: none;}
+body.brown-theme #theme-toggle .icon-sun{ display: none;}
+body.brown-theme #theme-toggle .icon-grass{ display: none;}
+body.brown-theme #theme-toggle .icon-cloud{ display: none;}
+body.brown-theme #theme-toggle .icon-cookie{ display: block}
+
 
 
 

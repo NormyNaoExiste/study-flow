@@ -108,6 +108,8 @@ const cenas = {
         </div>`
 }
 
+       
+
 
    
 
@@ -512,12 +514,12 @@ function removerFlashcardAtual(){
 }
 
 
-const temas = ['dark', 'light', 'green', 'blue'];
+const temas = ['dark', 'light', 'green', 'blue', 'brown'];
 
 function aplicarTema(tema) {
-    // remove todas as classes de tema
+   
     temas.forEach(t => document.body.classList.remove(`${t}-theme`));
-    // adiciona a do tema escolhido
+    
     document.body.classList.add(`${tema}-theme`);
     localStorage.setItem('tema', tema);
 }
