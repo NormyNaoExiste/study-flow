@@ -34,7 +34,7 @@ body.green-theme{
 }
 
 body.blue-theme{
-    --base-clr: #a9b6f2;
+    --base-clr: #a9c2f2;
     --line-clr: #8e9ad3;
     --hover-clr: #9ca9f1;
     --text-clr: #2432c2;
@@ -46,7 +46,7 @@ body.blue-theme{
 
 body.brown-theme{
     --base-clr: #17100e;
-    --line-clr: #3a2824;
+    --line-clr: #271c1a;
     --hover-clr: #271e1a;
     --text-clr: #a17660;
     --secondary-text: #c7a396;
@@ -349,6 +349,11 @@ main p{
     flex-shrink: 0;
     width: 32px;
     height: 32px;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font: inherit;
     line-height: 1;
     color: var(--secondary-text);
@@ -573,7 +578,7 @@ main p{
     z-index: 1000;
 }
 
-#theme-toggle .icon-sun{
+#theme-toggle-dae .icon-sun{
     display: none;
 }
 
@@ -589,29 +594,47 @@ main p{
     display: none;
 }
 
-body.light-theme #theme-toggle .icon-moon{ display: none;}
-body.light-theme #theme-toggle .icon-sun{ display: block;}
-body.light-theme #theme-toggle .icon-grass{ display: none;}
-body.light-theme #theme-toggle .icon-cloud{ display: none;}
-body.light-theme #theme-toggle .icon-cookie{ display: none}
+body.dark-theme #theme-toggle-dark { display: none;}
 
-body.blue-theme #theme-toggle .icon-moon{ display: none;}
-body.blue-theme #theme-toggle .icon-sun{ display: none;}
-body.blue-theme #theme-toggle .icon-grass{ display: none;}
-body.blue-theme #theme-toggle .icon-cloud{ display: block;}
-body.blue-theme #theme-toggle .icon-cookie{ display: none}
 
-body.green-theme #theme-toggle .icon-moon{ display: none;}
-body.green-theme #theme-toggle .icon-sun{ display: none;}
-body.green-theme #theme-toggle .icon-grass{ display: block;}
-body.green-theme #theme-toggle .icon-cloud{ display: none;}
-body.green-theme #theme-toggle .icon-cookie{ display: none}
+body.blue-theme #theme-toggle-blue { display: none;}
 
-body.brown-theme #theme-toggle .icon-moon{ display: none;}
-body.brown-theme #theme-toggle .icon-sun{ display: none;}
-body.brown-theme #theme-toggle .icon-grass{ display: none;}
-body.brown-theme #theme-toggle .icon-cloud{ display: none;}
-body.brown-theme #theme-toggle .icon-cookie{ display: block}
+
+body.green-theme #theme-toggle-green{ display: none;}
+
+
+body.light-theme #theme-toggle-light{ display: none;}
+
+body.brown-theme #theme-toggle-brown{ display: none;}
+
+
+
+button {
+   
+        border: 1px solid var(--line-clr);
+        border-radius: 24px;
+        color: var(--secondary-text);
+        padding: 20px 30px;
+        box-sizing: border-box;
+        font-weight: 600;
+        background: none;
+        margin-bottom: 5px;
+        margin-left: 5px;
+        margin-right: 5px;
+        transition: 20ms ease-in-out;
+     
+
+}
+
+button:hover {
+    color: #ffffff;
+    background-color: var(--button-clr);
+    border-color: var(--hover-clr);
+}
+
+
+
+
 
 
 

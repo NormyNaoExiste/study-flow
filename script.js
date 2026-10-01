@@ -105,8 +105,21 @@ const cenas = {
                     </a>
                 </div>
             </div>
-        </div>`
+        </div>`,
+        temas: `<div class="container">
+            <h2>Temas</h2>
+            <p>Escolha o tema que se sentir mais confortável</p>
+            <div class="tema-grid">
+            <button id="theme-toggle-green" onclick="aplicarTema('green')">Tema verde</button>
+            <button id="theme-toggle-blue" onclick="aplicarTema('blue')">Tema azul</button>
+            <button id="theme-toggle-brown" onclick="aplicarTema('brown')">Tema marrom</button>
+            <button id="theme-toggle-dark" onclick="aplicarTema('dark')">Tema escuro</button>
+            <button id="theme-toggle-light" onclick="aplicarTema('light')">Tema branco</button>
+            </div>
+        </div>
+        `
 }
+
 
        
 
