@@ -576,36 +576,23 @@ main p{
     justify-content: center;
     cursor: pointer;
     z-index: 1000;
+    padding: 0;
+    margin: 0;
 }
 
-#theme-toggle-dae .icon-sun{
+#theme-toggle svg{
     display: none;
+    fill: var(--text-clr);
 }
 
-#theme-toggle .icon-grass{
-    display: none;
+
+body.dark-theme #theme-toggle-dark { display: none;}body:not(.light-theme):not(.green-theme):not(.blue-theme):not(.brown-theme) #theme-toggle .icon-moon,
+body.light-theme #theme-toggle .icon-sun,
+body.green-theme #theme-toggle .icon-grass,
+body.blue-theme  #theme-toggle .icon-cloud,
+body.brown-theme #theme-toggle .icon-cookie{
+    display: block;
 }
-
-#theme-toggle .icon-cloud{
-    display: none;
-}
-
-#theme-toggle .icon-cookie{
-    display: none;
-}
-
-body.dark-theme #theme-toggle-dark { display: none;}
-
-
-body.blue-theme #theme-toggle-blue { display: none;}
-
-
-body.green-theme #theme-toggle-green{ display: none;}
-
-
-body.light-theme #theme-toggle-light{ display: none;}
-
-body.brown-theme #theme-toggle-brown{ display: none;}
 
 
 
