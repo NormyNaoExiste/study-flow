@@ -473,6 +473,33 @@ main p{
     border-radius: 999px;
 }
 
+.info-materia{
+ display: flex;
+ flex-direction: column;
+ align-items: flex-start;
+ gap: .35em;
+ min-width: 0;
+}
+.topo-tarefa{
+ display: flex;
+ align-items: center;
+ gap: .5em;
+}
+.cartao .botao-editar,
+.cartao-tarefa .botao-editar{
+ width: auto;
+ height: auto;
+ padding: .1em .75em;
+ font-size: .75rem;
+ border-radius: 999px;
+}
+.cartao .botao-editar:hover,
+.cartao-tarefa .botao-editar:hover{
+ color: #ffffff;
+ background-color: var(--danger-clr);
+ border-color: var(--hover-clr);
+}
+
 #area-flashcard{
     display: flex;
     flex-direction: column;

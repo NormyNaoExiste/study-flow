@@ -248,7 +248,12 @@ function mostrarMateria(){
     materias.forEach((nome, indice)=>{
         const cartao = document.createElement("div");
         cartao.className = "cartao";
-        cartao.innerHTML = nome + '<button onclick="removerMateria(' + indice +' )">x</button>';
+        cartao.innerHTML = `<div class="info-materia">
+                                <button class="botao-editar"
+                                onclick="editarMateria(${indice})">Editar</button>
+                                <span>${nome}</span>
+                            </div>
+                            <button onclick="removerMateria(${indice})">x</button>`;
         container.appendChild(cartao);
     });
 }
@@ -256,6 +261,35 @@ function mostrarMateria(){
 function removerMateria(indice){
     materias.splice(indice, 1);
     salvarDados("lumi_materias", materias)
+    mostrarMateria();
+}
+
+function editarMateria(indice){
+    const nomeAntigo = materias[indice];
+    const nomeNovo = prompt("Editar Matéria:", nomeAntigo);
+
+    if(nomeNovo === null) return
+    const limpo = nomeNovo.trim()
+    if(limpo === "" || limpo === nomeAntigo) return;
+
+    if(materias.includes(limpo)){
+        alert("Essa matéria já existe!")
+        return;
+    }
+
+    materias[indice] = limpo;
+
+    tarefas.forEach( t => {
+        if(t.categoria === nomeAntigo) t.categoria = limpo;
+    });
+    flashcards.forEach( f => {
+        if(f.categoria === nomeAntigo) f.categoria = limpo
+    })
+    if(filtroCategoriaAtual === nomeAntigo) filtroCategoriaAtual = limpo;
+
+    salvarDados("lumi_materias", materias);
+    salvarDados("lumi_tarefas", tarefas);
+    salvarDados("lumi_flashcards", flashcards);
     mostrarMateria();
 }
 
@@ -399,13 +433,15 @@ function mostrarTarefas(){
 
         const cartao = document.createElement("div");
         cartao.className = "cartao-tarefa";
-        cartao.innerHTML = `<div class="info-tarefa">
-                                <span class="categoria-tag">
-                                    ${categoriaTexto}
-                                </span>
-                                <p>${tarefa.texto}</p>
+        cartao.innerHTML = ` <div class="info-tarefa">
+                                <div class="topo-tarefa">
+                                    <span class="categoria-tag">${categoriaTexto}</span>
+                                    <button class="botao-editar"
+                                    onclick="editarTarefa(${tarefa.id})">Editar</button>
                                 </div>
-                            <button onclick="removerTarefa(${tarefa.id})">x</button>`;
+                                <p>${tarefa.texto}</p>
+                            </div>
+                            <button onclick="removerTarefa(${tarefa.id})">x</button>`
 
                             container.appendChild(cartao);
         
@@ -414,6 +450,21 @@ function mostrarTarefas(){
 }
 function removerTarefa(id){
     tarefas = tarefas.filter(t => t.id !== id);
+    salvarDados("lumi_tarefas", tarefas)
+    mostrarTarefas();
+}
+
+function editarTarefa(id){
+    const tarefa = tarefas.find(t => t.id === id);
+    if(!tarefa) return;
+
+    const textoNovo = prompt("Editar tarefa:", tarefa.texto);
+    if(textoNovo === null) return;
+
+    const limpo = textoNovo.trim();
+    if(limpo === "") return;
+
+    tarefa.texto = limpo;
     salvarDados("lumi_tarefas", tarefas)
     mostrarTarefas();
 }
