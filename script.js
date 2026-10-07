@@ -266,31 +266,34 @@ function removerMateria(indice){
 
 function editarMateria(indice){
     const nomeAntigo = materias[indice];
-    const nomeNovo = prompt("Editar Matéria:", nomeAntigo);
+    
+    abrirModal("Editar matéria", nomeAntigo, (nomeNovo)=>{
+        if(nomeNovo === nomeAntigo){
+            fecharModal();
+            return;
+        }
+        if(materias.includes(nomeNovo)){
+            alert("Essa matéria já existe!")
+            return;
+        }
+        
+        materias[indice] = nomeNovo;
 
-    if(nomeNovo === null) return
-    const limpo = nomeNovo.trim()
-    if(limpo === "" || limpo === nomeAntigo) return;
+        tarefas.forEach( t => {
+            if(t.categoria === nomeAntigo) t.categoria = nomeNovo;
+        });
+        flashcards.forEach( f => {
+            if(f.categoria === nomeAntigo) f.categoria = nomeNovo
+        })
+        if(filtroCategoriaAtual === nomeAntigo) filtroCategoriaAtual = nomeNovo;
 
-    if(materias.includes(limpo)){
-        alert("Essa matéria já existe!")
-        return;
-    }
 
-    materias[indice] = limpo;
-
-    tarefas.forEach( t => {
-        if(t.categoria === nomeAntigo) t.categoria = limpo;
-    });
-    flashcards.forEach( f => {
-        if(f.categoria === nomeAntigo) f.categoria = limpo
+        salvarDados("lumi_materias", materias);
+        salvarDados("lumi_tarefas", tarefas);
+        salvarDados("lumi_flashcards", flashcards);
+        mostrarMateria();
+        fecharModal();
     })
-    if(filtroCategoriaAtual === nomeAntigo) filtroCategoriaAtual = limpo;
-
-    salvarDados("lumi_materias", materias);
-    salvarDados("lumi_tarefas", tarefas);
-    salvarDados("lumi_flashcards", flashcards);
-    mostrarMateria();
 }
 
 //pomodoro - peguei de outro projeto
@@ -458,15 +461,12 @@ function editarTarefa(id){
     const tarefa = tarefas.find(t => t.id === id);
     if(!tarefa) return;
 
-    const textoNovo = prompt("Editar tarefa:", tarefa.texto);
-    if(textoNovo === null) return;
-
-    const limpo = textoNovo.trim();
-    if(limpo === "") return;
-
-    tarefa.texto = limpo;
-    salvarDados("lumi_tarefas", tarefas)
+   abrirModal("Editar tarefa", tarefa.texto, (textoNovo)=>{
+    tarefa.texto = textoNovo;
+    salvarDados("lumi_tarefas", tarefas);
     mostrarTarefas();
+    fecharModal()
+   })
 }
 
 //Flashcards
@@ -599,8 +599,44 @@ function carregarTema() {
     aplicarTema(temaSalvo);
 }
 
+// modal / pop-up de editar
 
+let aoSalvarModal = null;
 
+function abrirModal(titulo, valorAtual, aoSalvar){
+    const input = document.getElementById("modal-input");
+
+    document.getElementById("modal-titulo").textContent = titulo;
+    input.value = valorAtual;
+    aoSalvarModal = aoSalvar;
+
+    document.getElementById("modal-editar").classList.add("aberto");
+    input.focus();
+    input.select();
+}
+
+function fecharModal(){
+    document.getElementById("modal-editar").classList.remove("aberto");
+    aoSalvarModal = null;
+}
+
+function confirmarModal(){
+    const valor = document.getElementById("modal-input").value.trim();
+    if(valor === "" || !aoSalvarModal) return;
+    aoSalvarModal(valor);
+}
+
+function cliqueNoFundo(e){
+    if(e.target.id === "modal-editar") fecharModal();
+}
+
+document.addEventListener("keydown", (e) =>{
+    const aberto = document.getElementById("modal-editar").classList.contains("aberto");
+    if(!aberto) return;
+
+    if(e.key === "Escape") fecharModal();
+    if(e.key === "Enter") confirmarModal();
+})
 
 //salvar e carregar
 

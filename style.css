@@ -621,7 +621,71 @@ body.brown-theme #theme-toggle .icon-cookie{
     display: block;
 }
 
+.modal-fundo{
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1em;
+    background-color: rgba(0, 0, 0, .6);
+}
 
+.modal-fundo.aberto{
+    display: flex;
+}
+
+.modal-caixa{
+    width: min(100%, 420px);
+    padding: 1.5em;
+    color: var(--text-clr);
+    background-color: var(--base-clr);
+    border: 1px solid var(--line-clr);
+    border-radius: 1em;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, .35);
+}
+
+.modal-caixa h3{
+    margin: 0 0 1em;
+}
+
+.modal-caixa input[type="text"]{
+    box-sizing: border-box;
+    width: 100%;
+    padding: .75em 1em;
+    font: inherit;
+    color: var(--text-clr);
+    background-color: transparent;
+    border: 1px solid var(--line-clr);
+    border-radius: .5em;
+}
+
+.modal-caixa input[type="text"]:focus{
+    outline: none;
+    border-color: var(--hover-clr);
+}
+
+.modal-botoes{
+    display: flex;
+    justify-content: flex-end;
+    gap: .75em;
+    margin-top: 1.25em;
+}
+
+.botao-modal{
+    padding: .75em 1.4em;
+    font: inherit;
+    color: var(--secondary-text);
+    background: none;
+    border: 1px solid var(--line-clr);
+    border-radius: .5em;
+    cursor: pointer;
+}
+
+.botao-modal:hover{
+    background-color: var(--hover-clr); 
+}
 
 button {
    
@@ -810,7 +874,7 @@ button{
         }
     }
     #theme-toggle{
-        bottom: 8px;
+        bottom: 90%;
         right: 8px;
         width: 46px;
         height: 46px;
