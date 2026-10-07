@@ -249,6 +249,7 @@ function mostrarMateria(){
         const cartao = document.createElement("div");
         cartao.className = "cartao";
         cartao.innerHTML = `<div class="info-materia">
+                                <span class="categoria-tag">${nome}</span>
                                 <button class="botao-editar"
                                 onclick="editarMateria(${indice})">Editar</button>
                                 <span>${nome}</span>

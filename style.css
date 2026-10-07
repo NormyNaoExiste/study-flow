@@ -489,7 +489,7 @@ main p{
 .cartao-tarefa .botao-editar{
  width: auto;
  height: auto;
- padding: .1em .75em;
+ padding: .5em .75em;
  font-size: .75rem;
  border-radius: 999px;
 }
@@ -498,6 +498,19 @@ main p{
  color: #ffffff;
  background-color: var(--danger-clr);
  border-color: var(--hover-clr);
+}
+
+.cartao .botao-editar,
+.cartao-tarefa .botao-editar{
+    opacity: 0;
+    transition: opacity 150ms ease;
+}
+
+.cartao:hover .botao-editar,
+.cartao-tarefa:hover .botao-editar,
+.cartao:focus-within .botao-editar,
+.cartao-tarefa:focus-within .botao-editar{
+    opacity: 1;
 }
 
 #area-flashcard{
@@ -711,13 +724,6 @@ button:hover {
 }
 
 
-
-
-
-
-
-
-
 body,
 .container,
 #pomodoro,
@@ -878,5 +884,12 @@ button{
         right: 8px;
         width: 46px;
         height: 46px;
+    }
+}
+
+@media (hover: none){
+    .cartao .botao-editar,
+    .cartao-tarefa .botao-editar{
+        opacity: 1;
     }
 }
