@@ -77,6 +77,20 @@ body{
     grid-template-columns: auto 1fr;
 }
 
+/* padrão de linhas que muda de cor com o tema (máscara + cor do tema) */
+body::before{
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-color: var(--text-clr);
+    opacity: .15;
+    -webkit-mask: url('assets/padrao-linhas.png') center / cover no-repeat;
+            mask: url('assets/padrao-linhas.png') center / cover no-repeat;
+    transition: background-color 250ms ease;
+}
+
 #sidebar{
     box-sizing: border-box;
     height: 100vh;
@@ -306,7 +320,7 @@ main p{
     padding: .75em 1em;
     font: inherit;
     color: var(--text-clr);
-    background-color: transparent;
+    background-color: var(--base-clr);
     border: 1px solid var(--line-clr);
     border-radius: .5em;
     transition: border-color 150ms ease, box-shadow 150ms ease;
@@ -669,7 +683,7 @@ body.brown-theme #theme-toggle .icon-cookie{
     padding: .75em 1em;
     font: inherit;
     color: var(--text-clr);
-    background-color: transparent;
+    background-color: var(--base-clr);
     border: 1px solid var(--line-clr);
     border-radius: .5em;
 }
@@ -745,6 +759,15 @@ button{
     text-decoration: none;
 }
 
+
+/* fundo sólido nos blocos da interface (evita transparência sobre a imagem do main) */
+.container,
+#pomodoro,
+.container-dev,
+.cartao,
+.cartao-tarefa{
+    background-color: var(--base-clr);
+}
 
 @media(min-width:801px){
     #sidebar ul{
