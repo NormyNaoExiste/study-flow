@@ -792,6 +792,8 @@ button{
         border: none;
         padding: 0;
         min-width: 0;
+        /* sem borda no celular, o fundo sólido cobriria o padrão inteiro */
+        background-color: transparent;
     }
      #creditos{
         margin-top: 0;
@@ -805,6 +807,7 @@ button{
         border: none;
         padding: 1em 0;
         row-gap: 0.5em;
+        background-color: transparent;
     }
 
     .container-dev h2, .container-dev p{

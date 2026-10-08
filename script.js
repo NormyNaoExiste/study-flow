@@ -84,7 +84,7 @@ const cenas = {
                 <img src="https://github.com/NormyNaoExiste.png" class="photo">
                 <div>
                     <a href="https://github.com/NormyNaoExiste/"><h2>Davi Felipe</h2>
-                    <p>Desenvolvedor front-end</p></a>
+                    <p>Desenvolvedor Front-end</p></a>
                 </div>
             </div>
             <div class="container-dev">
@@ -92,7 +92,7 @@ const cenas = {
                 <div>
                     <a href="https://github.com/Danielle-sys-tech">
                         <h2>Danielle Heloisa</h2>
-                        <p>Desenvolvedora mobile</p>
+                        <p>Designer</p>
                     </a>
                 </div>
             </div>
@@ -101,7 +101,7 @@ const cenas = {
                 <div>
                     <a href="https://github.com/leoMnZs">
                         <h2>Leonardo Menezes</h2>
-                        <p>Desenvolvedor mobile</p>
+                        <p>Desenvolvedor Front-end</p>
                     </a>
                 </div>
             </div>
