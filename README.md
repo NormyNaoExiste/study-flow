@@ -1,9 +1,9 @@
-![Static Badge](https://img.shields.io/badge/Lumi-Vers%C3%A3o_1.2-purple?style=for-the-badge&logo=html5&logoColor=white&logoSize=auto&labelColor=gray)
+![Static Badge](https://img.shields.io/badge/Lumi-Vers%C3%A3o_1.3-purple?style=for-the-badge&logo=html5&logoColor=white&logoSize=auto&labelColor=gray)
 
 # Lumi - o App de estudos
 
 ## Página inicial:
-![tela inicial](photos/home.png)
+![tela inicial](photos/image.png)
 
 ## O que Lumi proporciona?
 - Criação de tarefas
