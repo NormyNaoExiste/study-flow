@@ -117,7 +117,42 @@ const cenas = {
             <button id="theme-toggle-light" onclick="aplicarTema('light')">Tema branco</button>
             </div>
         </div>
-        `
+        `,
+
+        calculadora: `<div class="container">
+        <h2>Calculadora</h2>
+        <div id="calculadora">
+            <div id="calc-visor">
+                <span id="calc-expressao"></span>
+                <span id="calc-resultado">0</span>
+            </div>
+            <div id="calc-teclas">
+                <button type="button" class="calc-acao" onclick="calcLimpar()">C</button>
+                <button type="button" class="calc-acao" onclick="calcApagar()">⌫</button>
+                <button type="button" class="calc-acao" onclick="calcInverterSinal()">±</button>
+                <button type="button" class="calc-op" onclick="calcEscolherOperador('÷')">÷</button>
+
+                <button type="button" onclick="calcDigito('7')">7</button>
+                <button type="button" onclick="calcDigito('8')">8</button>
+                <button type="button" onclick="calcDigito('9')">9</button>
+                <button type="button" class="calc-op" onclick="calcEscolherOperador('×')">×</button>
+
+                <button type="button" onclick="calcDigito('4')">4</button>
+                <button type="button" onclick="calcDigito('5')">5</button>
+                <button type="button" onclick="calcDigito('6')">6</button>
+                <button type="button" class="calc-op" onclick="calcEscolherOperador('-')">-</button>
+
+                <button type="button" onclick="calcDigito('1')">1</button>
+                <button type="button" onclick="calcDigito('2')">2</button>
+                <button type="button" onclick="calcDigito('3')">3</button>
+                <button type="button" class="calc-op" onclick="calcEscolherOperador('+')">+</button>
+
+                <button type="button" class="calc-zero" onclick="calcDigito('0')">0</button>
+                <button type="button" onclick="calcDigito('.')">.</button>
+                <button type="button" class="calc-igual" onclick="calcIgual()">=</button>
+            </div>
+        </div>
+    </div>`
 }
 
 
@@ -600,7 +635,7 @@ function carregarTema() {
     aplicarTema(temaSalvo);
 }
 
-// modal / pop-up de editar
+
 
 let aoSalvarModal = null;
 
@@ -639,7 +674,7 @@ document.addEventListener("keydown", (e) =>{
     if(e.key === "Enter") confirmarModal();
 })
 
-//salvar e carregar
+
 
 function salvarDados(chave, dados){
     localStorage.setItem(chave, JSON.stringify(dados));
@@ -655,4 +690,93 @@ function carregarDados(chave, valorPadrao){
         console.error(`Erro ao ler "${chave}" do armazenamento local`, erro)
         return valorPadrao
     }
+}
+
+let calcAtual = "0";
+let calcAnterior = null;
+let calcOp = null;
+let calcRecomecar = false; 
+
+function calcAtualizarVisor(){
+    const resultado = document.getElementById("calc-resultado");
+    const expressao = document.getElementById("calc-expressao");
+    if(!resultado || !expressao) return;
+
+    resultado.textContent = calcAtual;
+    expressao.textContent = calcOp ? `${calcAnterior} ${calcOp}` : "";
+}
+
+function calcDigito(d){
+    if(calcAtual === "Erro" || calcRecomecar){
+        calcAtual = "0";
+        calcRecomecar = false;
+    }
+    if(d === "." && calcAtual.includes(".")) return;
+    if(calcAtual.replace("-", "").length >= 12) return;
+
+    calcAtual = (calcAtual === "0" && d !== ".") ? d : calcAtual + d;
+    calcAtualizarVisor();
+}
+
+function calcEscolherOperador(op){
+    if(calcAtual === "Erro") return;
+
+   
+    if(calcOp !== null && !calcRecomecar){
+        calcIgual();
+        if(calcAtual === "Erro") return;
+    }
+
+    calcAnterior = calcAtual;
+    calcOp = op;
+    calcRecomecar = true;
+    calcAtualizarVisor();
+}
+
+function calcular(a, b, op){
+    switch(op){
+        case "+": return a + b;
+        case "-": return a - b;
+        case "×": return a * b;
+        case "÷": return b === 0 ? null : a / b;
+    }
+}
+
+function calcIgual(){
+    if(calcOp === null || calcRecomecar) return;
+
+    const resultado = calcular(parseFloat(calcAnterior), parseFloat(calcAtual), calcOp);
+
+    if(resultado === null){
+        calcAtual = "Erro";
+    } else {
+       
+        calcAtual = String(parseFloat(resultado.toFixed(10)));
+    }
+
+    calcAnterior = null;
+    calcOp = null;
+    calcRecomecar = true;
+    calcAtualizarVisor();
+}
+
+function calcLimpar(){
+    calcAtual = "0";
+    calcAnterior = null;
+    calcOp = null;
+    calcRecomecar = false;
+    calcAtualizarVisor();
+}
+
+function calcApagar(){
+    if(calcRecomecar || calcAtual === "Erro") return;
+    calcAtual = calcAtual.length > 1 ? calcAtual.slice(0, -1) : "0";
+    if(calcAtual === "-") calcAtual = "0";
+    calcAtualizarVisor();
+}
+
+function calcInverterSinal(){
+    if(calcAtual === "0" || calcAtual === "Erro") return;
+    calcAtual = calcAtual.startsWith("-") ? calcAtual.slice(1) : "-" + calcAtual;
+    calcAtualizarVisor();
 }
